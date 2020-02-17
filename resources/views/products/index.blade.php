@@ -63,9 +63,13 @@
                           <img class="pic-2" src="{{ asset("images/$cloth->image_lateral")}}">
                       </a>
                       <ul class="social">
-                         <li><a href="{{route('products.show', $cloth->id)}}"><i class="fa fa-eye"></i></a></li>
-                          <li><a href="{{route('products.edit', $cloth->id)}}"><i class="fa fa-edit"></i></a></li>
-                          <li><a href="#"><i class="fa fa-trash"></i></a></li>
+                          <form action="{{ route('products.destroy',$cloth->id) }}" method="POST">
+                              <li><a href="{{route('products.show', $cloth->id)}}"><i class="fa fa-eye"></i></a></li>
+                              <li><a href="{{route('products.edit', $cloth->id)}}"><i class="fa fa-edit"></i></a></li>
+                              @csrf
+                              @method('DELETE')
+                              <li><button type="submit"><i class="fa fa-trash"></i></button></li>
+                           </form>
                       </ul>
                       <span class="product-new-label">{{$cloth->state}}</span>
                   </div>
@@ -105,9 +109,13 @@
                           <img class="pic-2" src="{{ asset("images/$cloth->image_lateral")}}">
                       </a>
                       <ul class="social">
-                          <li><a href="{{route('products.show', $cloth->id)}}"><i class="fa fa-eye"></i></a></li>
-                          <li><a href="{{route('products.edit', $cloth->id)}}"><i class="fa fa-edit"></i></a></li>
-                          <li><a href="#"><i class="fa fa-trash"></i></a></li>
+                          <form action="{{ route('products.destroy',$cloth->id) }}" method="POST">
+                              <li><a href="{{route('products.show', $cloth->id)}}"><i class="fa fa-eye"></i></a></li>
+                              <li><a href="{{route('products.edit', $cloth->id)}}"><i class="fa fa-edit"></i></a></li>
+                              @csrf
+                              @method('DELETE')
+                              <li><button type="submit"><i class="fa fa-trash"></i></button></li>
+                           </form>
                       </ul>
                       <span class="product-new-label">{{$cloth->state}}</span>
                   </div>

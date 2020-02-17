@@ -16,21 +16,25 @@
 
                         <!-- Text input-->
                         <div class="form-group">
+                            <label class="col-md-6 control-label" for="filebutton">Nome Prodotto</label>
                           <input id="product_name" name="name" placeholder="Inserisci il nome del  prodotto" value="{{$product->name}}" class="form-control input-md" required type="text">
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
+                            <label class="col-md-6 control-label" for="filebutton">Prezzo Prodotto</label>
                           <input id="product_price" name="price_regular" placeholder="Inserisci il prezzo del prodotto" value="{{$product->price_regular}}" class="form-control input-md" required type="text">
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
+                            <label class="col-md-6 control-label" for="filebutton">Prezzo Scontato Prodotto</label>
                           <input id="product_price_discount" name="price_discount" placeholder="Inserisci il prezzo scontato del prodotto" value="{{$product->price_discount}}" class="form-control input-md" required type="text">
                         </div>
 
                         <!-- Select Basic -->
                         <div class="form-group">
+                            <label class="col-md-6 control-label" for="filebutton">Target Prodotto</label>
                             <select id="product_vote" name="state" class="form-control">
                                 <option value=''>Seleziona target prodotto</option>
                                 <option value="New" @if($product->state == "New") @php echo 'selected' @endphp @endif>New</option>
@@ -41,20 +45,21 @@
 
                         <!-- Text input-->
                         <div class="form-group">
+                            <label class="col-md-6 control-label" for="filebutton">Voto Prodotto</label>
                           <input id="product_vote" name="vote" placeholder="Inserisci un voto per il prodotto da 0 a 5" value="{{$product->vote}}" class="form-control input-md" required type="text">
                         </div>
 
                          <!-- File Immagine Frontale -->
+                         <label class="col-md-6 control-label" for="filebutton">Immagine Frontale</label>
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="filebutton">Immagine Frontale</label>
-                            <img class="pic-1" src="{{ asset("images/$product->image_front")}}">
+                                <img class="col-md-4" src="{{ asset("images/$product->image_front")}}">
                             <input id="immagine_frontale" name="image_front" class="input-file" type="file">
                         </div>
 
                         <!-- File Immagine Laterale -->
+                        <label class="col-md-6 control-label" for="filebutton">Immagine Laterale</label>
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="filebutton">Immagine Laterale</label>
-                            <img class="pic-2" src="{{ asset("images/$product->image_lateral")}}">
+                                <img class="col-md-4" src="{{ asset("images/$product->image_lateral")}}">
                             <input id="immagine_laterale" name="image_lateral" class="input-file" type="file">
                         </div>
 

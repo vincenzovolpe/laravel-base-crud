@@ -59,6 +59,7 @@ class ProductController extends Controller
         $file_image_front = time().'.'.$dati['image_front']->getClientOriginalName();
         $file_image_lateral = time().'.'.$dati['image_lateral']->getClientOriginalName();
 
+        // Sposto i file nella cartella public/images
         $request->image_front->move(public_path('images'), $file_image_front);
         $request->image_lateral->move(public_path('images'), $file_image_lateral);
 
@@ -114,6 +115,27 @@ class ProductController extends Controller
         // Recupero i dati dal form
         $dati = $request->all();
 
+        //Creazione nome immagini e copia nella cartella images
+        $file_image_front = time().'.'.$request->image_front->getClientOriginalName();
+        $file_image_lateral = time().'.'.$request->image_lateral->getClientOriginalName();
+
+        // Cancello i vecchi file dalla cartella images
+        if(\File::exists(public_path('images/'.$product->image_front))){
+            \File::delete(public_path('images/'.$product->image_front));
+        }
+
+        if(\File::exists(public_path('images/'.$product->image_lateral))){
+            \File::delete(public_path('images/'.$product->image_lateral));
+        }
+
+        // Sposto i file nella cartella public/images
+        $request->image_front->move(public_path('images'), $file_image_front);
+        $request->image_lateral->move(public_path('images'), $file_image_lateral);
+
+
+        $dati['image_front'] = $file_image_front;
+        $dati['image_lateral'] = $file_image_lateral;
+
         // Aggiorno nel database il prodotto appena modificato
         $product->update($dati);
 
@@ -129,6 +151,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+
+        // Cancello i file dalla cartella images
+        if(\File::exists(public_path('images/'.$product->image_front))){
+            \File::delete(public_path('images/'.$product->image_front));
+        }
+
+        if(\File::exists(public_path('images/'.$product->image_lateral))){
+            \File::delete(public_path('images/'.$product->image_lateral));
+        }
+
         // Cancello il prodotto dal database
         $product->delete();
 
