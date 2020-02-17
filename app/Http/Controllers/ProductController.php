@@ -62,7 +62,7 @@ class ProductController extends Controller
         $request->image_front->move(public_path('images'), $file_image_front);
         $request->image_lateral->move(public_path('images'), $file_image_lateral);
 
-        // Creo una nuova istanzadella classe Clothe
+        // Creo una nuova istanza della classe Clothe
         $nuovo_prodotto = new Product();
         // Assegno all'oggetto Clothe tutte le propietà compilate nel form (posso usare fill)
         $nuovo_prodotto->name = $dati['name'];
@@ -129,6 +129,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        // Cancello il prodotto dal database
+        $product->delete();
+
+        // Redirect all' Homepage
+        return redirect()->route('products.index');
     }
 }
